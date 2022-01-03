@@ -120,6 +120,6 @@ class Personnage {
    */
   public function setItems(string $items): void
   {
-    $this->items = $items;
+    $this->items = $items; 
   }
 }
