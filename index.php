@@ -15,7 +15,9 @@
 <body>
   <?php
     var_dump($newPerso);
+    $newPerso->addItem("Allumettes");
 
+    // $newPerso->removeItem("Allumettes");
     $newPerso->displayStats();
   ?>
 </body>

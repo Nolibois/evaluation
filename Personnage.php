@@ -135,15 +135,37 @@ class Personnage {
 
     ";
 
-    echo "
-    <li>Items:</li> 
-    <ul>";
-    foreach ($this->items as $key => $value) {
-      ?>
-      <li><?= $value; ?></li>
-      <?php
+    if (!empty($this->items)) {
+      echo "
+      <li>Items:</li> 
+      <ul>";
+      foreach ($this->items as $key => $value) {
+        ?>
+        <li><?= $value; ?></li>
+        <?php
+      }
+   
+      echo "</ul></ul>";
+    } else {
+      echo "
+      <li>Inventaire vide</li> 
+      <ul>";
     }
- 
-    echo "</ul></ul>";
+    
   }
+
+  public function addItem(string $item){
+    $this->items[] = $item;
+  }
+
+  public function removeItem(string $item){
+    $result = array_search($item,$this->items);
+    if (!$result) {
+      echo "<p>Cet objet n'existe pas.</p>";
+    } else {
+      array_splice($this->items, $result, 1);
+    }
+    
+  }
+
 }
