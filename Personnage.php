@@ -124,6 +124,9 @@ class Personnage {
   }
 
 
+  /**
+   * Display statistics
+   */
   public function displayStats(): void
   {
     echo "<ul>
@@ -135,6 +138,7 @@ class Personnage {
 
     ";
 
+    
     if (!empty($this->items)) {
       echo "
       <li>Items:</li> 
@@ -154,12 +158,38 @@ class Personnage {
     
   }
 
-  public function addItem(string $item){
+  /**
+   * Check if object exist
+   */
+  public function searchItem(string $item): void
+  {
+    $result = in_array($item,$this->items);
+
+    if(!$result){
+      echo "<p>Cet objet n'existe pas.</p>";
+    }else{
+      echo "<p>L'objet \"$item\" fait bien parti de l'inventaire.</p>";
+
+    }
+  }
+
+
+  /**
+   * Add object to the inventory
+   */
+  public function addItem(string $item): void
+  {
     $this->items[] = $item;
   }
 
-  public function removeItem(string $item){
+
+  /**
+   * Delete object of the inventory
+   */
+  public function removeItem(string $item): void
+  {
     $result = array_search($item,$this->items);
+
     if (!$result) {
       echo "<p>Cet objet n'existe pas.</p>";
     } else {
