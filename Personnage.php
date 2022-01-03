@@ -6,7 +6,7 @@ class Personnage {
   private int $health_points;
   private int $attack;
   private int $defense;
-  private int $mana;
+  private string $mana;
   public array $items;
 
   public function __construct(
@@ -14,7 +14,7 @@ class Personnage {
     string $health_points, 
     int $attack, 
     int $defense, 
-    int $mana, 
+    string $mana, 
     array $items
     ){
 
@@ -92,9 +92,9 @@ class Personnage {
   }
 
   /**
-   * Return value of mana :int
+   * Return value of mana :string
    */
-  public function getMana(): int
+  public function getMana(): string
   {
     return $this->mana;
   }
@@ -102,7 +102,7 @@ class Personnage {
   /**
    * Change value of mana
    */
-  public function setMana(int $mana): void
+  public function setMana(string $mana): void
   {
     $this->mana = $mana;
   }
@@ -121,5 +121,29 @@ class Personnage {
   public function setItems(string $items): void
   {
     $this->items = $items; 
+  }
+
+
+  public function displayStats(): void
+  {
+    echo "<ul>
+      <li>Nom: $this->name</li>
+      <li>HP: $this->health_points</li>
+      <li>Attack: $this->attack</li>
+      <li>Defense: $this->defense</li>
+      <li>Mana: $this->mana</li>
+
+    ";
+
+    echo "
+    <li>Items:</li> 
+    <ul>";
+    foreach ($this->items as $key => $value) {
+      ?>
+      <li><?= $value; ?></li>
+      <?php
+    }
+ 
+    echo "</ul></ul>";
   }
 }
